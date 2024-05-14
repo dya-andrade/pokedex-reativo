@@ -1,6 +1,7 @@
 package com.mulhermarav.pokedexreativo.controller
 
 import com.mulhermarav.pokedexreativo.model.Pokemon
+import com.mulhermarav.pokedexreativo.model.PokemonEvent
 import com.mulhermarav.pokedexreativo.repository.PokemonRepository
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
+import java.time.Duration
 
 @RestController
 @RequestMapping("/pokemons")
@@ -59,6 +61,10 @@ class PokemonController(
 
     @DeleteMapping
     fun deleteAllPokemons() = repository.deleteAll()
+
+    @GetMapping("/events", produces = ["text/event-stream"])
+    fun getPokemonEvents(): Flux<PokemonEvent> = Flux.interval(Duration.ofSeconds(5))
+        .map { PokemonEvent(it, "Pokemon Event") }
 
     /**
      * then é usado para indicar que uma determinada operação deve ser executada

@@ -23,14 +23,14 @@ class DataInitializer {
 	@Bean
 	fun init(operations: ReactiveMongoOperations, repository: PokemonRepository): CommandLineRunner {
 		return CommandLineRunner {
-			val pokemonFlux = listOf(
-				Pokemon(null, "Bulbassauro", "Semente", listOf("Overgrow", "Chlorophyll"), 6.09),
-				Pokemon(null, "Charizard", "Fogo", listOf("Blaze", "Solar Power"), 90.05),
-				Pokemon(null, "Caterpie", "Minhoca", listOf("Shield Dust", "Run Away"), 2.09),
-				Pokemon(null, "Blastoise", "Marisco", listOf("Torrent", "Rain Dish"), 85.09)
-			).toFlux().flatMap { repository.save(it) }
-
-			pokemonFlux.thenMany(repository.findAll())
+			repository.deleteAll().thenMany(
+				listOf(
+					Pokemon(null, "Bulbassauro", "Semente", listOf("Overgrow", "Chlorophyll"), 6.09),
+					Pokemon(null, "Charizard", "Fogo", listOf("Blaze", "Solar Power"), 90.05),
+					Pokemon(null, "Caterpie", "Minhoca", listOf("Shield Dust", "Run Away"), 2.09),
+					Pokemon(null, "Blastoise", "Marisco", listOf("Torrent", "Rain Dish"), 85.09)
+				).toFlux().flatMap { repository.save(it) }
+			).thenMany(repository.findAll())
 				.subscribe { println(it) }
 		}
 	}
