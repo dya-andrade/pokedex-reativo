@@ -3,9 +3,9 @@ Projeto API Rest de Pokedéx Pokemon com Webflux, MongoDB e AWS
 
 ### Pré-requisitos
 
-* JDK 8+
-* Kotlinc 1.9+
-* Gradle 8.7+
+* JDK 17+
+* Kotlinc
+* Gradle
 
 ### Dependências
 
@@ -18,7 +18,6 @@ Projeto API Rest de Pokedéx Pokemon com Webflux, MongoDB e AWS
 ```shell
 gradle build
 ```
-
 ```shell
 gradle bootRun
 ```
@@ -55,6 +54,52 @@ Isso permite que o sistema seja escalável e responsivo.</p>
 <p>Aplicativos que requerem atualizações em tempo real, como aplicativos de chat ou sistemas de monitoramento em 
 tempo real, o Kotlin com WebFlux pode ser uma escolha poderosa devido à sua natureza reativa.</p>
 
+### Deploy no EC2 AWS
+
+* Criar uma instância EC2 na AWS (Ubuntu)
+
+* Se conectar via SSH
+
+```shell
+chmod 400 <key.pem>
+ssh -i <key.pem> ubuntu@<ip-public>
+```
+* Instalar o Git e clonar o projeto
+
+```shell
+sudo apt-get update
+sudo apt-get -y install git
+git --version
+git clone https://github.com/dya-andrade/pokedex-reativo.git
+```
+
+* Instalar o Java 17
+
+```shell
+sudo apt-get -y install openjdk-17-jdk
+java -version
+```
+
+* Instalar o Kotlinc
+
+```shell
+sudo apt-get install -y kotlin
+kotlinc -version
+```
+
+* Instalar o Gradle
+
+```shell
+sudo apt-get -y install gradle
+gradle --version
+```
+
+* Buildar e executar o projeto
+    
+```shell
+cd pokedex-reativo
+gradle build
+```
 
 ### Referência
 
