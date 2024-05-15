@@ -1,5 +1,5 @@
 # pokedex-reativo
-Projeto API Rest de Pokedéx Pokemon com Webflux, MongoDB e AWS
+Projeto API Rest de Pokédex Pokémon com Webflux, MongoDB e AWS
 
 ### Pré-requisitos
 
