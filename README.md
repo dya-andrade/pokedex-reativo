@@ -5,7 +5,7 @@ Projeto API Rest de Pokédex Pokémon com Webflux, MongoDB e AWS
 
 * JDK 17+
 * Kotlinc
-* Gradle
+* Gradle 7+
 
 ### Dependências
 
@@ -83,14 +83,16 @@ java -version
 * Instalar o Kotlinc
 
 ```shell
-sudo apt-get install -y kotlin
+#sudo apt-get install -y kotlin
+sudo snap install --classic kotlin
 kotlinc -version
 ```
 
 * Instalar o Gradle
 
 ```shell
-sudo apt-get -y install gradle
+#sudo apt-get -y install gradle
+sudo snap install --classic kotlin
 gradle --version
 ```
 
@@ -99,6 +101,31 @@ gradle --version
 ```shell
 cd pokedex-reativo
 gradle build
+gradle bootRun
+```
+* Em instâncias EC2 Linux
+
+```shell
+sudo dnf update -y
+sudo dnf install -y git
+git --version
+git clone https://github.com/dya-andrade/pokedex-reativo.git
+
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+sdk install java 17-open
+java -version
+
+sdk install kotlin
+kotlinc -version
+
+sdk install gradle
+gradle --version
+
+cd pokedex-reativo
+gradle build
+gradle bootRun
 ```
 
 ### Referência
