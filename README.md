@@ -4,8 +4,8 @@ Projeto API Rest de Pokédex Pokémon com Webflux, MongoDB e AWS
 ### Pré-requisitos
 
 * JDK 17+
-* Kotlinc
-* Gradle 7+
+* Kotlinc 1.9+
+* Gradle 8+
 
 ### Dependências
 
@@ -117,10 +117,10 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java 17-open
 java -version
 
-sdk install kotlin
+sdk install kotlin 1.9.0
 kotlinc -version
 
-sdk install gradle
+sdk install gradle 8.7
 gradle --version
 
 cd pokedex-reativo
