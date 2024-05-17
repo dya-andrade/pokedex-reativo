@@ -128,6 +128,12 @@ gradle build
 gradle bootRun
 ```
 
+* Acessar a aplicação via HTTP
+
+````
+http://<ip-public>:8080/pokemons
+````
+
 ### Referência
 
 [Ana Beatriz - Dev.to](https://dev.to/womakerscode/criando-seu-pokedex-com-spring-webflux-mongodb-deploy-no-heroku-21f5)
